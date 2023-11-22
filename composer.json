@@ -1,0 +1,19 @@
+{
+    "name": "dev/adocao-pets",
+    "description": "O projeto constitui em um sistema de adoção de animais de acordo com as localidades que os usuarios postam",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "teste",
+            "email": "teste@teste.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "monolog/monolog": "^2.2"
+      },
+      "scripts": {
+        "test": "phpunit"
+      }
+}
