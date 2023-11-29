@@ -68,6 +68,33 @@ $user = verificarUsuarioLogado();
             <span class="error-message" id="sexoError"></span>
         </div>
     </div>
+         <div class="input-data">
+            <label for="Raça">Raça de Cachorro</label>
+            <select name="Raça" id="Raça">
+                <option value="" selected disabled>Selecione a raça</option>
+                <option value="Husky siberiano">Husky siberiano</option>
+                <option value="labrador">labrador</option>
+                <option value="American Bully">American Bully</option>
+                <option value="Bull Terrier">Bull Terrier</option>
+                
+            </select>
+            <span class="error-message" id="raceError"></span>
+        </div>
+    </div>
+
+    <div class="input-data">
+            <label for="Raça">Raça de Gato</label>
+            <select name="Raça" id="Raça">
+                <option value="" selected disabled>Selecione a raça</option>
+                <option value="American Bobtail">American Bobtail</option>
+                <option value="Sagrado da Birmânia">Sagrado da Birmânia</option>
+                <option value="Longhair Britânico">Longhair Britânico</option>
+                <option value="Siberiano">Siberiano</option>
+                
+            </select>
+            <span class="error-message" id="raceError"></span>
+        </div>
+    </div>
 
     <div class="double-data">
         <div class="input-data">
