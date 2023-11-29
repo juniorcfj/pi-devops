@@ -54,6 +54,7 @@ CREATE TABLE `cadastropet` (
   `nome` text NOT NULL,
   `especie` text NOT NULL,
   `sexo` text NOT NULL,
+  `raça` text NOT NULL,
   `idade` text NOT NULL,
   `porte` text NOT NULL,
   `estado` text NOT NULL,
