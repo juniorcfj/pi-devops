@@ -13,7 +13,7 @@ function buscarAnimais() {
     $cidade = isset($_GET['cidade']) ? $_GET['cidade'] : '';
 
     
-    $sql = "SELECT cp.foto, cp.nome, cp.especie,cp.estado, cp.cidade, cp.sexo, cp.idade, cp.porte, c.whatsapp FROM cadastropet cp  left join cadastro c ON cp.dono = c.id WHERE adotado = false and aprovacaoAdmin = 1 and 1";
+    $sql = "SELECT cp.foto, cp.nome, cp.especie,cp.estado, cp.cidade, cp.sexo, cp.idade, cp.porte, c.whatsapp, cp.raca FROM cadastropet cp  left join cadastro c ON cp.dono = c.id WHERE adotado = false and aprovacaoAdmin = 1 and 1";
 
     if (!empty($especie)) {
         $sql .= " AND especie = '$especie'";
@@ -59,7 +59,7 @@ function buscarAnimais() {
 
             
             // Adicione um botão que, quando clicado, abrirá um modal
-            echo '<button class="informacoes-pet" onclick="abrirModal(\'' . $row['nome'] . '\', \'' . $row['especie'] . '\', \'' . $row['sexo'] . '\', \'' . $row['idade'] . '\', \'' . $row['porte'] . '\', \'' . $row['whatsapp'] . '\')">Ver Detalhes</button>';
+            echo '<button class="informacoes-pet" onclick="abrirModal(\'' . $row['nome'] . '\', \'' . $row['especie'] . '\', \'' . $row['sexo'] . '\', \'' . $row['idade'] . '\', \'' . $row['porte'] . '\', \'' . $row['raca'] . '\')">Ver Detalhes</button>';
             
             echo '</li>';
         }
