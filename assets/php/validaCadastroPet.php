@@ -8,7 +8,7 @@ $conn = conectarAoBanco();
 $user = verificarUsuarioLogado();
 
 // Função para validar e cadastrar os dados do pet
-function cadastrarPet($dono, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $foto)
+function cadastrarPet($dono, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $foto, $raca)
 {
     $conn = conectarAoBanco();
 
@@ -19,7 +19,7 @@ function cadastrarPet($dono, $nome, $especie, $sexo, $idade, $porte, $estado, $c
         $fotoCaminho = null;
     }
 
-   $sql = "INSERT INTO cadastropet (dono, nome, especie, sexo, idade, porte, estado, cidade, adotado, foto, aprovacaoAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   $sql = "INSERT INTO cadastropet (dono, nome, especie, sexo, idade, porte, estado, cidade, adotado, foto, aprovacaoAdmin, raca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {
@@ -30,7 +30,7 @@ if ($stmt === false) {
 $adotado = $adotado ? 1 : 0;
 $aprovacaoAdmin = 0;
 // Define os parâmetros e executa a declaração
-$stmt->bind_param("ssssssssisi", $dono, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $fotoCaminho,$aprovacaoAdmin );
+$stmt->bind_param("ssssssssisis", $dono, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $fotoCaminho,$aprovacaoAdmin, $raca );
     if ($stmt->execute()) {
         echo "<script>setTimeout(function(){window.location.href='../../views/autenticado/home.php';}, 3000);</script>";
         echo "<div class='success'>Obrigado por cadastrar seu pet na nossa plataforma!!</div>";
@@ -54,11 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estado = $_POST['estado'];
     $cidade = $_POST['cidade'];
     $adotado = false;
+    $raca = $_POST['raca'];
 
     // Verifica se foi enviado um arquivo
     if (isset($_FILES['foto'])) {
         $foto = $_FILES['foto'];
-        cadastrarPet($user, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $foto);
+        cadastrarPet($user, $nome, $especie, $sexo, $idade, $porte, $estado, $cidade, $adotado, $foto, $raca);
     } else {
         // Lidar com o caso em que não foi enviado um arquivo
         echo "Erro: Nenhuma imagem enviada.";
