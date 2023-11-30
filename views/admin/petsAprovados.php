@@ -1,3 +1,16 @@
+<?php
+session_start();
+require '../../assets/php/conexao.php';
+require '../../assets/php/verificaAdmin.php';
+$conn = conectarAoBanco();
+
+if (!isAdmin()) {
+    header("Location: ../../views/autenticado/home.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
