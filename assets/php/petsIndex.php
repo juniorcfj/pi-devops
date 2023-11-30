@@ -59,7 +59,7 @@ function listarPets()
 
     $conn = conectarAoBanco();
     
-    $sql = "SELECT cp.foto, cp.nome, cp.especie,cp.estado, cp.cidade, cp.sexo, cp.idade, cp.porte, c.whatsapp FROM cadastropet cp  left join cadastro c ON cp.dono = c.id WHERE adotado = false and aprovacaoAdmin = 1 ORDER BY cp.id desc limit 8";
+    $sql = "SELECT cp.foto, cp.nome, cp.especie,cp.estado, cp.cidade, cp.sexo, cp.idade, cp.porte, c.whatsapp, cp.raca FROM cadastropet cp  left join cadastro c ON cp.dono = c.id WHERE adotado = false and aprovacaoAdmin = 1 ORDER BY cp.id desc limit 8";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -81,7 +81,7 @@ function listarPets()
 
             
             // Adicione um botão que, quando clicado, abrirá um modal
-            echo '<button class="informacoes-pet" onclick="abrirModal(\'' . $row['nome'] . '\', \'' . $row['especie'] . '\', \'' . $row['sexo'] . '\', \'' . $row['idade'] . '\', \'' . $row['porte'] . '\', \'' . $row['whatsapp'] . '\')">Ver Detalhes</button>';
+            echo '<button class="informacoes-pet" onclick="abrirModal(\'' . $row['nome'] . '\', \'' . $row['especie'] . '\', \'' . $row['sexo'] . '\', \'' . $row['idade'] . '\', \'' . $row['porte'] . '\', \'' . $row['raca'] . '\')">Ver Detalhes</button>';
             
             echo '</li>';
         }
@@ -102,14 +102,14 @@ function listarPets()
 </div>
 
 <script>
-    function abrirModal(nome, especie, sexo, idade, porte, whatsapp) {
+    function abrirModal(nome, especie, sexo, idade, porte, raca) {
         var modalContent = document.getElementById('modalContent');
         modalContent.innerHTML = '<p>Nome: ' + nome + '</p>' +
                                  '<p>Espécie: ' + especie + '</p>' +
                                  '<p>Sexo: ' + sexo + '</p>' +
                                  '<p>Idade: ' + idade + '</p>' +
                                  '<p>Porte: ' + porte + '</p>' +
-                                 '<p>Telefone: ' + whatsapp + '</p>';
+                                 '<p>Telefone: ' + raca + '</p>';
 
         var modal = document.getElementById('myModal');
         modal.style.display = 'block';
