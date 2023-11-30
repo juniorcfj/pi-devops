@@ -71,11 +71,12 @@
 </body>
 </html>
 <script>
-    function abrirModal(nome, especie, sexo, idade, porte, whatsapp) {
+    function abrirModal(nome, especie, sexo, raça, idade, porte, whatsapp) {
         var modalContent = document.getElementById('modalContent');
         modalContent.innerHTML = '<p>Nome: ' + nome + '</p>' +
                                  '<p>Espécie: ' + especie + '</p>' +
                                  '<p>Sexo: ' + sexo + '</p>' +
+                                 '<p>raça: ' + raça + '</p>' +
                                  '<p>Idade: ' + idade + '</p>' +
                                  '<p>Porte: ' + porte + '</p>' +
                                  '<p>Telefone: ' + whatsapp + '</p>';
